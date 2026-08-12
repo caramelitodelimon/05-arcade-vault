@@ -16,3 +16,13 @@ npx skills@latest add Klerith/fernando-skills
 ```
 
 ## hola mundo
+
+## Commands
+
+```bash
+npm run dev      # next dev
+npm run build    # next build
+npm start        # next start (needs a prior build)
+npm run lint     # eslint (flat config, no args needed)
+npx tsc --noEmit # typecheck; the build does not emit JS
+```

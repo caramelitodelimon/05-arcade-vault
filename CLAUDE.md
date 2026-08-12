@@ -4,17 +4,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 @AGENTS.md
 
-## Commands
 
-```bash
-npm run dev      # next dev
-npm run build    # next build
-npm start        # next start (needs a prior build)
-npm run lint     # eslint (flat config, no args needed)
-npx tsc --noEmit # typecheck; the build does not emit JS
-```
 
 No test runner is configured — there is no test script, framework, or test file in the repo. If tests become necessary, ask which runner to add rather than assuming one.
+
+## Skills
+Usa siempre  /frontend-desing para diseñar interfaces de usuario.
 
 ## Stack
 
