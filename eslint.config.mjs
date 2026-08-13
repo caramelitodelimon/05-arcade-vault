@@ -12,6 +12,11 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // references/templates/ is a standalone browser prototype (React 18 +
+    // Babel from a CDN, globals instead of imports/modules) — it is not
+    // part of the built app and was never meant to satisfy this project's
+    // ESLint rules. See CLAUDE.md.
+    "references/**",
   ]),
 ]);
 
