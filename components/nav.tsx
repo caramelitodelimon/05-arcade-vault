@@ -1,9 +1,12 @@
 "use client";
 
 // ===== components/nav.tsx — nav persistente =====
-// Portado de references/templates/nav.jsx. El router hash del prototipo
-// (route/navigate) se reemplaza por rutas reales de Next (Link, usePathname);
-// el usuario de sesión sale de useSession() en vez de venir por props.
+// Portado de references/templates/nav.jsx (y del link "Inicio" agregado en
+// references/templates/home-about/nav.jsx, spec 02-home-landing). El router
+// hash del prototipo (route/navigate) se reemplaza por rutas reales de Next
+// (Link, usePathname); el usuario de sesión sale de useSession() en vez de
+// venir por props. El link "Acerca de" del prototipo no se porta: la
+// pantalla About queda fuera de este spec.
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -17,21 +20,25 @@ export function Nav() {
 
   const close = () => setOpen(false);
 
-  const isBiblioteca = pathname === "/biblioteca" || pathname.startsWith("/juegos");
+  const isHome = pathname === "/home";
+  const isGames = pathname === "/games" || pathname.startsWith("/juegos");
   const isSalon = pathname === "/salon";
   const isAuth = pathname === "/auth";
 
   return (
     <>
       <nav className="av-nav">
-        <Link href="/biblioteca" className="logo" onClick={close}>
+        <Link href="/home" className="logo" onClick={close}>
           <div className="logo-mark" />
           <div className="logo-text neon-cyan">
             ARCADE <span className="neon-magenta">VAULT</span>
           </div>
         </Link>
         <div className="links">
-          <Link className={isBiblioteca ? "active" : ""} href="/biblioteca">
+          <Link className={isHome ? "active" : ""} href="/home">
+            Inicio
+          </Link>
+          <Link className={isGames ? "active" : ""} href="/games">
             Biblioteca
           </Link>
           <Link className={isSalon ? "active" : ""} href="/salon">
@@ -62,7 +69,10 @@ export function Nav() {
         <div className="pixel neon-cyan" style={{ fontSize: 11, marginBottom: 16 }}>
           MENÚ
         </div>
-        <Link className={isBiblioteca ? "active" : ""} href="/biblioteca" onClick={close}>
+        <Link className={isHome ? "active" : ""} href="/home" onClick={close}>
+          Inicio
+        </Link>
+        <Link className={isGames ? "active" : ""} href="/games" onClick={close}>
           Biblioteca
         </Link>
         <Link className={isSalon ? "active" : ""} href="/salon" onClick={close}>

@@ -101,7 +101,7 @@ export default function SalonPage() {
       </div>
 
       <div style={{ textAlign: "center", marginTop: 32 }}>
-        <Link className="btn lg" href="/biblioteca">
+        <Link className="btn lg" href="/games">
           VOLVER A LA BIBLIOTECA
         </Link>
       </div>
