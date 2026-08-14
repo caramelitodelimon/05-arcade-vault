@@ -5,8 +5,10 @@
 // references/templates/home-about/nav.jsx, spec 02-home-landing). El router
 // hash del prototipo (route/navigate) se reemplaza por rutas reales de Next
 // (Link, usePathname); el usuario de sesión sale de useSession() en vez de
-// venir por props. El link "Acerca de" del prototipo no se porta: la
-// pantalla About queda fuera de este spec.
+// venir por props. El link a /about se llama "Sobre nosotros" (no "Acerca
+// de" como en el prototipo) — decisión explícita del usuario en spec
+// 03-about-contacto-resend; el copy dentro de la propia página About sigue
+// diciendo "ACERCA DE".
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -23,6 +25,7 @@ export function Nav() {
   const isHome = pathname === "/home";
   const isGames = pathname === "/games" || pathname.startsWith("/juegos");
   const isSalon = pathname === "/salon";
+  const isAbout = pathname === "/about";
   const isAuth = pathname === "/auth";
 
   return (
@@ -43,6 +46,9 @@ export function Nav() {
           </Link>
           <Link className={isSalon ? "active" : ""} href="/salon">
             Salón de la Fama
+          </Link>
+          <Link className={isAbout ? "active" : ""} href="/about">
+            Sobre nosotros
           </Link>
         </div>
         <div className="spacer" />
@@ -77,6 +83,9 @@ export function Nav() {
         </Link>
         <Link className={isSalon ? "active" : ""} href="/salon" onClick={close}>
           Salón de la Fama
+        </Link>
+        <Link className={isAbout ? "active" : ""} href="/about" onClick={close}>
+          Sobre nosotros
         </Link>
         <Link className={isAuth ? "active" : ""} href="/auth" onClick={close}>
           {user ? "Cuenta" : "Iniciar Sesión"}
